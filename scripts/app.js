@@ -44,6 +44,13 @@ let previousEntry = randomDirectoryEntry;
 function lastEntries(previousEntry){
     //.push adds to the array, here we're adding the entry that just displayed
     previousEntriesArray.push(previousEntry);
+    const maxPreviousEntries = 5; 
+    //So we can make sure the array and previous entries section only holds a max of 5 entries.
+    if (previousEntriesArray.length > 5){
+        //The .shift() method will allow us to remove the first item from the array, changing the array, and return now changed array back.
+        //This will allow us the remove the oldest entry and repalce it with the newest entry.
+        previousEntriesArray.shift();
+    }
     previousEntries.innerHTML = " "; //need this to avoid duplicates
     for (let i = previousEntriesArray.length - 1; i >= 0; i--){
         const previousEntry = previousEntriesArray[i];
